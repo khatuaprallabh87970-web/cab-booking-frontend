@@ -7,7 +7,7 @@ export default function RideHistory() {
   const [rides, setRides] = useState([]);
 
   const fetchHistory = async () => {
-    const res = await axios.get("http://localhost:5000/api/rides/all");
+    const res = await axios.get("https://cab-booking-backend-rcg3.onrender.com/api/rides/all");
     setRides(res.data);
   };
 

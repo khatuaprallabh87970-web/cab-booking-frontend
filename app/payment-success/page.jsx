@@ -9,7 +9,7 @@ export default function PaymentSuccess() {
     const rideId = localStorage.getItem("lastRide");
 
     if (rideId) {
-      axios.put(`http://localhost:5000/api/rides/pay/${rideId}`);
+      axios.put(`https://cab-booking-backend-rcg3.onrender.com/api/rides/pay/${rideId}`);
     }
   }, []);
 

@@ -29,7 +29,7 @@ export default function DriverDashboard() {
 
         try {
           await axios.put(
-            `http://localhost:5000/api/rides/location/${rideId}`,
+            `https://cab-booking-backend-rcg3.onrender.com/api/rides/location/${rideId}`,
             { lat, lng }
           );
         } catch (error) {
@@ -50,7 +50,7 @@ export default function DriverDashboard() {
   // Fetch pending rides
   const fetchRides = async () => {
     const res = await axios.get(
-      "http://localhost:5000/api/rides/pending"
+      "https://cab-booking-backend-rcg3.onrender.com/api/rides/pending"
     );
     setRides(res.data);
   };
@@ -58,7 +58,7 @@ export default function DriverDashboard() {
   // Fetch rides assigned to this driver
   const fetchDriverRide = async () => {
   const res = await axios.get(
-    `http://localhost:5000/api/rides/driver/${driverId}`
+    `https://cab-booking-backend-rcg3.onrender.com/api/rides/driver/${driverId}`
   );
 
   setRides((prev) => {
@@ -83,7 +83,7 @@ export default function DriverDashboard() {
     console.log("Ride ID:", rideId);
 
     await axios.put(
-      `http://localhost:5000/api/rides/accept/${rideId}`,
+      `https://cab-booking-backend-rcg3.onrender.com/api/rides/accept/${rideId}`,
       { driverId }
     );
 
@@ -94,7 +94,7 @@ export default function DriverDashboard() {
   // Start ride
   const startRide = async (rideId) => {
     await axios.put(
-      `http://localhost:5000/api/rides/start/${rideId}`
+      `https://cab-booking-backend-rcg3.onrender.com/api/rides/start/${rideId}`
     );
 
     // 🟢 Start sending GPS location
@@ -107,7 +107,7 @@ export default function DriverDashboard() {
   // Complete ride
   const completeRide = async (rideId) => {
     await axios.put(
-      `http://localhost:5000/api/rides/complete/${rideId}`
+      `https://cab-booking-backend-rcg3.onrender.com/api/rides/complete/${rideId}`
     );
     fetchRides();
     fetchDriverRide();

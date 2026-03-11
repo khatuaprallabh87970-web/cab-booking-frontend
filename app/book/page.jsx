@@ -23,7 +23,7 @@ export default function BookRide() {
   const [ride, setRide] = useState(null);
 
   const fetchRideStatus = async () => {
-    const res = await axios.get("http://localhost:5000/api/rides/all");
+    const res = await axios.get("https://cab-booking-backend-rcg3.onrender.com/api/rides/all");
     if (res.data.length > 0) {
       setRide(res.data[0]);
     }
@@ -58,7 +58,7 @@ export default function BookRide() {
 
     if (!pickup || !dropoff) return;
 
-    await axios.post("http://localhost:5000/api/rides/create", {
+    await axios.post("https://cab-booking-backend-rcg3.onrender.com/api/rides/create", {
       rider_id: localStorage.getItem("userId"),
       pickup_location: pickup.address,
       dropoff_location: dropoff.address,
@@ -77,7 +77,7 @@ export default function BookRide() {
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/api/rides/create-checkout-session",
+        "https://cab-booking-backend-rcg3.onrender.com/api/rides/create-checkout-session",
         {
           rideId: ride.id,
           amount: ride.fare,
@@ -225,7 +225,7 @@ export default function BookRide() {
                         className="text-2xl"
                         onClick={async () => {
                           await axios.put(
-                            `http://localhost:5000/api/rides/rate/${ride.id}`,
+                            `https://cab-booking-backend-rcg3.onrender.com/api/rides/rate/${ride.id}`,
                             { rating: star }
                           );
                           alert("Thanks for rating!");
